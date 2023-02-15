@@ -22,7 +22,7 @@ export function ButtonPrimary({ text, onAddWord }: ButtonPrimaryProps) {
   return (
     <button
       type="button"
-      className="font-bold capitalize p-8 max-lg:p-3"
+      className="font-bold capitalize p-8 max-lg:px-4 max-lg:py-2 "
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
