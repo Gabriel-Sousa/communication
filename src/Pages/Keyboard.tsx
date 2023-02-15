@@ -4,7 +4,12 @@ import { version } from '../../package.json'
 import { Input } from '../components/Input'
 import { Letters } from '../components/Letters'
 import { Words } from '../components/Words'
-export default function Keyboard() {
+
+interface KeyboardProps {
+  time: number
+}
+
+export default function Keyboard({ time }: KeyboardProps) {
   const [phrase, setPhrase] = useState<string[]>([])
   const [isKeyboardAllowed, setIsKeyboardAllowed] = useState(false)
 
@@ -40,9 +45,14 @@ export default function Keyboard() {
           phrase={phrase}
           isKeyboardAllowed={isKeyboardAllowed}
           startOrStop={startOrStop}
+          time={time}
         />
-        <Words onAddWord={addWord} />
-        <Letters onAddWord={addWord} onDeleteLastWord={deleteLastWord} />
+        <Words onAddWord={addWord} time={time} />
+        <Letters
+          onAddWord={addWord}
+          onDeleteLastWord={deleteLastWord}
+          time={time}
+        />
       </div>
       <strong className="fixed bottom-0 right-8">ALPHA {version}</strong>
     </main>

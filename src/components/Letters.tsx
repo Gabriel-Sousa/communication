@@ -3,9 +3,10 @@ import { Button } from '../components/Button'
 interface LettersProps {
   onAddWord: (word: string) => void
   onDeleteLastWord: () => void
+  time: number
 }
 
-export function Letters({ onAddWord, onDeleteLastWord }: LettersProps) {
+export function Letters({ onAddWord, onDeleteLastWord, time }: LettersProps) {
   const letters = [
     { text: 'a' },
     { text: 'b' },
@@ -46,6 +47,7 @@ export function Letters({ onAddWord, onDeleteLastWord }: LettersProps) {
           variant={`${letter.variant === 'action' ? 'action' : 'secondary'}`}
           onAddWord={onAddWord}
           onDeleteLastWord={onDeleteLastWord}
+          time={time}
         />
       ))}
     </div>

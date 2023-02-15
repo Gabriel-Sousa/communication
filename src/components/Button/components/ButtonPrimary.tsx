@@ -2,16 +2,17 @@ import { useState } from 'react'
 
 interface ButtonPrimaryProps {
   text: string
+  time: number
   onAddWord: (word: string) => void
 }
-export function ButtonPrimary({ text, onAddWord }: ButtonPrimaryProps) {
+export function ButtonPrimary({ text, onAddWord, time }: ButtonPrimaryProps) {
   const [delayHandler, setDelayHandler] = useState(null || Number)
 
   function handleMouseEnter() {
     setDelayHandler(
       setTimeout(() => {
         onAddWord(text)
-      }, 2500),
+      }, time),
     )
   }
 

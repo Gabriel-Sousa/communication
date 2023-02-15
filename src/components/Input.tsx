@@ -3,18 +3,24 @@ import { MdPause, MdPlayArrow } from 'react-icons/md'
 
 interface InputProps {
   phrase: string[]
+  time: number
   isKeyboardAllowed: boolean
   startOrStop: () => void
 }
 
-export function Input({ phrase, isKeyboardAllowed, startOrStop }: InputProps) {
+export function Input({
+  phrase,
+  isKeyboardAllowed,
+  startOrStop,
+  time,
+}: InputProps) {
   const [delayHandler, setDelayHandler] = useState(null || Number)
 
   function handleMouseEnter() {
     setDelayHandler(
       setTimeout(() => {
         startOrStop()
-      }, 2500),
+      }, time),
     )
   }
 

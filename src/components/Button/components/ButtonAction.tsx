@@ -3,6 +3,7 @@ import { MdBackspace, MdSpaceBar } from 'react-icons/md'
 
 interface ButtonActionProps {
   text: string
+  time: number
   onAddWord: (word: string) => void
   onDeleteLastWord?: () => void
 }
@@ -11,6 +12,7 @@ export function ButtonAction({
   text,
   onAddWord,
   onDeleteLastWord,
+  time,
 }: ButtonActionProps) {
   const [delayHandler, setDelayHandler] = useState(null || Number)
 
@@ -22,7 +24,7 @@ export function ButtonAction({
         } else if (text === 'delete') {
           onDeleteLastWord && onDeleteLastWord()
         }
-      }, 2500),
+      }, time),
     )
   }
 
