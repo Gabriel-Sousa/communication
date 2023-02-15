@@ -7,7 +7,7 @@ export function Input({ phrase }: InputProps) {
     <div className="font-medium p-4 max-lg:p-2">
       <input
         type="text"
-        className="text-gray-400"
+        className="text-gray-400 w-full"
         readOnly
         value={phrase.toString().replaceAll(',', '')}
       />
