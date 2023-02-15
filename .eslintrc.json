@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    "simple-import-sort"
+  ],
+  "extends": "@rocketseat/eslint-config/react",
+  "rules": {
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
+  }
+}
