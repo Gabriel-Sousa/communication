@@ -46,6 +46,32 @@ export function ButtonAction({
     clearTimeout(delayHandler)
   }
 
+  let timeComputed = '_25'
+
+  if (time === 500) {
+    timeComputed = '_05'
+  } else if (time === 1000) {
+    timeComputed = '_10'
+  } else if (time === 1500) {
+    timeComputed = '_15'
+  } else if (time === 2000) {
+    timeComputed = '_20'
+  } else if (time === 2500) {
+    timeComputed = '_25'
+  } else if (time === 3000) {
+    timeComputed = '_30'
+  } else if (time === 3500) {
+    timeComputed = '_35'
+  } else if (time === 4000) {
+    timeComputed = '_40'
+  } else if (time === 4500) {
+    timeComputed = '_45'
+  } else if (time === 5000) {
+    timeComputed = '_50'
+  } else {
+    timeComputed = '_25'
+  }
+
   return (
     <button
       type="button"
@@ -55,11 +81,11 @@ export function ButtonAction({
     >
       <div className="max-h-[72px] max-lg:h-[36px]">
         <div
-          className={`progress 
-                ${isAnimationOn ? 'block' : 'hidden'}
-                max-lg:h-[36px]
-                
-              `}
+          className={`progress
+          ${timeComputed}
+          ${isAnimationOn ? 'block' : 'hidden'}
+            max-lg:h-[36px] 
+          `}
         />
         <p
           className={`relative 

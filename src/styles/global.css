@@ -61,8 +61,40 @@ body{
   height: 72px;
   background: red;
   animation-name: example;
+}
+
+._05{
+  animation-duration: 0.5s;
+}
+._10{
+  animation-duration: 1s;
+}
+._15{
+  animation-duration: 1.5s;
+}
+._20{
+  animation-duration: 2s;
+}
+._25{
+  animation-duration: 2.5s;
+}
+._30{
+  animation-duration: 3.0s;
+}
+._35{
+  animation-duration: 3.5s;
+}
+._40{
+  animation-duration: 4.0s;
+}
+._45{
+  animation-duration: 4.5s;
+}
+._50{
   animation-duration: 5s;
 }
+
+
 
 @keyframes example {
   from {background-color: red; width: 0px; }
