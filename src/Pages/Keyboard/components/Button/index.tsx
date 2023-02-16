@@ -6,6 +6,7 @@ interface ButtonProps {
   variant: 'primary' | 'secondary' | 'action'
   text: string
   time: number
+  isKeyboardAllowed: boolean
   onAddWord: (word: string) => void
   onDeleteLastWord?: () => void
 }
@@ -16,11 +17,26 @@ export function Button({
   onAddWord,
   onDeleteLastWord,
   time,
+  isKeyboardAllowed,
 }: ButtonProps) {
   if (variant === 'primary') {
-    return <ButtonPrimary text={text} onAddWord={onAddWord} time={time} />
+    return (
+      <ButtonPrimary
+        text={text}
+        onAddWord={onAddWord}
+        time={time}
+        isKeyboardAllowed={isKeyboardAllowed}
+      />
+    )
   } else if (variant === 'secondary') {
-    return <ButtonSecondary text={text} onAddWord={onAddWord} time={time} />
+    return (
+      <ButtonSecondary
+        text={text}
+        onAddWord={onAddWord}
+        time={time}
+        isKeyboardAllowed={isKeyboardAllowed}
+      />
+    )
   } else if (variant === 'action') {
     return (
       <ButtonAction
@@ -28,6 +44,7 @@ export function Button({
         onAddWord={onAddWord}
         onDeleteLastWord={onDeleteLastWord}
         time={time}
+        isKeyboardAllowed={isKeyboardAllowed}
       />
     )
   } else {

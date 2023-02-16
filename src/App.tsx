@@ -1,3 +1,5 @@
+import 'react-circular-progressbar/dist/styles.css'
+
 import { BrowserRouter } from 'react-router-dom'
 
 import { Router } from './Router'

@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-import { version } from '../../package.json'
-import { Input } from '../components/Input'
-import { Letters } from '../components/Letters'
-import { Words } from '../components/Words'
+import { version } from '../../../package.json'
+import { Input } from './components/Input'
+import { Letters } from './components/Letters'
+import { Words } from './components/Words'
 
 interface KeyboardProps {
   time: number
@@ -47,11 +47,16 @@ export default function Keyboard({ time }: KeyboardProps) {
           startOrStop={startOrStop}
           time={time}
         />
-        <Words onAddWord={addWord} time={time} />
+        <Words
+          onAddWord={addWord}
+          time={time}
+          isKeyboardAllowed={isKeyboardAllowed}
+        />
         <Letters
           onAddWord={addWord}
           onDeleteLastWord={deleteLastWord}
           time={time}
+          isKeyboardAllowed={isKeyboardAllowed}
         />
       </div>
       <strong className="fixed bottom-0 right-8">ALPHA {version}</strong>

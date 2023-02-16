@@ -4,9 +4,15 @@ interface LettersProps {
   onAddWord: (word: string) => void
   onDeleteLastWord: () => void
   time: number
+  isKeyboardAllowed: boolean
 }
 
-export function Letters({ onAddWord, onDeleteLastWord, time }: LettersProps) {
+export function Letters({
+  onAddWord,
+  onDeleteLastWord,
+  time,
+  isKeyboardAllowed,
+}: LettersProps) {
   const letters = [
     { text: 'a' },
     { text: 'b' },
@@ -48,6 +54,7 @@ export function Letters({ onAddWord, onDeleteLastWord, time }: LettersProps) {
           onAddWord={onAddWord}
           onDeleteLastWord={onDeleteLastWord}
           time={time}
+          isKeyboardAllowed={isKeyboardAllowed}
         />
       ))}
     </div>

@@ -3,9 +3,10 @@ import { Button } from './Button'
 interface WordsProps {
   onAddWord: (word: string) => void
   time: number
+  isKeyboardAllowed: boolean
 }
 
-export function Words({ onAddWord, time }: WordsProps) {
+export function Words({ onAddWord, time, isKeyboardAllowed }: WordsProps) {
   const words = [{ text: 'eu ' }, { text: 'sim ' }, { text: 'não ' }]
 
   return (
@@ -17,6 +18,7 @@ export function Words({ onAddWord, time }: WordsProps) {
           variant="primary"
           onAddWord={onAddWord}
           time={time}
+          isKeyboardAllowed={isKeyboardAllowed}
         />
       ))}
     </div>

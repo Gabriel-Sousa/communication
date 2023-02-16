@@ -4,6 +4,8 @@ import { MdBackspace, MdSpaceBar } from 'react-icons/md'
 interface ButtonActionProps {
   text: string
   time: number
+  isKeyboardAllowed: boolean
+
   onAddWord: (word: string) => void
   onDeleteLastWord?: () => void
 }
@@ -13,15 +15,25 @@ export function ButtonAction({
   onAddWord,
   onDeleteLastWord,
   time,
+  isKeyboardAllowed,
 }: ButtonActionProps) {
   const [delayHandler, setDelayHandler] = useState(null || Number)
+  const [isAnimationOn, setIsAnimationOn] = useState(false)
 
   function handleMouseEnter() {
+    if (isKeyboardAllowed) {
+      setIsAnimationOn(true)
+    }
+
     setDelayHandler(
       setTimeout(() => {
         if (text === 'space') {
+          setIsAnimationOn(false)
+
           onAddWord(' ')
         } else if (text === 'delete') {
+          setIsAnimationOn(false)
+
           onDeleteLastWord && onDeleteLastWord()
         }
       }, time),
@@ -29,6 +41,8 @@ export function ButtonAction({
   }
 
   function handleMouseLeave() {
+    setIsAnimationOn(false)
+
     clearTimeout(delayHandler)
   }
 
@@ -39,7 +53,21 @@ export function ButtonAction({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {text === 'space' ? <MdSpaceBar /> : <MdBackspace />}
+      <div className="max-h-[72px] max-lg:h-[36px]">
+        <div
+          className={`progress 
+                ${isAnimationOn ? 'block' : 'hidden'}
+                max-lg:h-[36px]
+                
+              `}
+        />
+        <p
+          className={`relative 
+            ${isAnimationOn && 'bottom-[72px] max-lg:bottom-[36px]'}`}
+        >
+          {text === 'space' ? <MdSpaceBar /> : <MdBackspace />}
+        </p>
+      </div>
     </button>
   )
 }
