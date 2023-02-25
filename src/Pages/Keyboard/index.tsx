@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 
-import { version } from '../../../package.json'
 import { Input } from './components/Input'
 import { Letters } from './components/Letters'
 import { Words } from './components/Words'
@@ -115,7 +114,6 @@ export default function Keyboard({ time }: KeyboardProps) {
           isKeyboardAllowed={isKeyboardAllowed}
         />
       </div>
-      <strong className="fixed bottom-0 right-8">ALPHA {version}</strong>
     </main>
   )
 }
