@@ -31,19 +31,14 @@ export default function Keyboard({ time }: KeyboardProps) {
     if (!isKeyboardAllowed && phrase.length > 0) {
       const stringWords = phrase.join('')
       const arrayWords = stringWords.split(' ')
-      const stringMsg = arrayWords.join('')
+      const stringMsg = arrayWords.join(' ')
 
       const speech = new SpeechSynthesisUtterance(stringMsg)
       const voices = speechSynthesis.getVoices()
       speech.voice = voices[1]
       speech.volume = 2
-      speech.rate = 1
+      speech.rate = 0.7
       speech.pitch = 1
-      speech.onboundary = function (event) {
-        setTimeout(() => {
-          // console.log('Pausa entre as palavras.')
-        }, 5000) // definir o tempo de pausa em milissegundos (1000 ms = 1 segundo)
-      }
 
       window.speechSynthesis.speak(speech)
     }
@@ -54,16 +49,25 @@ export default function Keyboard({ time }: KeyboardProps) {
       return
     }
 
-    const word = phrase[phrase.length - 1]
+    const speech = new SpeechSynthesisUtterance()
+    speechSynthesis.onvoiceschanged = () => {
+      const word = phrase[phrase.length - 1]
+      const voices = speechSynthesis.getVoices()
+      speech.voice = voices[1]
+      speech.text = word
+      speech.volume = 2
+      speech.rate = 1
+      speech.pitch = 1
+      window.speechSynthesis.speak(speech)
+    }
 
-    const speech = new SpeechSynthesisUtterance(word)
+    const word = phrase[phrase.length - 1]
     const voices = speechSynthesis.getVoices()
-    speech.text = word
     speech.voice = voices[1]
+    speech.text = word
     speech.volume = 2
     speech.rate = 1
     speech.pitch = 1
-
     window.speechSynthesis.speak(speech)
   }, [phrase])
 
