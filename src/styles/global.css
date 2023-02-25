@@ -94,8 +94,6 @@ body{
   animation-duration: 5s;
 }
 
-
-
 @keyframes example {
   from {background-color: red; width: 0px; }
   to {background-color: yellow; width: 100%; }
