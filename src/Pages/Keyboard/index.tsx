@@ -23,7 +23,7 @@ export default function Keyboard({ time }: KeyboardProps) {
     })
 
   if ('speechSynthesis' in window) {
-    console.log('Web Speech API é compatível com este navegador')
+    // console.log('Web Speech API é compatível com este navegador')
   } else {
     alert('Web Speech API não é compatível com este navegador')
   }
