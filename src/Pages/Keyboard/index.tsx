@@ -30,9 +30,6 @@ export default function Keyboard({ time }: KeyboardProps) {
 
   useEffect(() => {
     if (!isKeyboardAllowed && phrase.length > 0) {
-      const word = phrase
-      console.log(word)
-
       const stringWords = phrase.join('')
       const arrayWords = stringWords.split(' ')
       const stringMsg = arrayWords.join('')
@@ -43,6 +40,11 @@ export default function Keyboard({ time }: KeyboardProps) {
       speech.volume = 2
       speech.rate = 1
       speech.pitch = 1
+      speech.onboundary = function (event) {
+        setTimeout(() => {
+          // console.log('Pausa entre as palavras.')
+        }, 5000) // definir o tempo de pausa em milissegundos (1000 ms = 1 segundo)
+      }
 
       window.speechSynthesis.speak(speech)
     }
