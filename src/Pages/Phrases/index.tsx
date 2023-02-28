@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 
-import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
 import { Letters } from '../../components/Letters'
 import { Words } from '../../components/Words'
@@ -52,14 +51,14 @@ export default function Keyboard({ time }: KeyboardProps) {
 
     const speech = new SpeechSynthesisUtterance()
     speechSynthesis.onvoiceschanged = () => {
-      //   const word = phrase[phrase.length - 1]
+      const word = phrase[phrase.length - 1]
       const voices = speechSynthesis.getVoices()
       speech.voice = voices[1]
-      //   speech.text = word
-      //   speech.volume = 2
-      //   speech.rate = 1
-      //   speech.pitch = 1
-      //   window.speechSynthesis.speak(speech)
+      speech.text = word
+      speech.volume = 2
+      speech.rate = 1
+      speech.pitch = 1
+      window.speechSynthesis.speak(speech)
     }
 
     const word = phrase[phrase.length - 1]
@@ -118,35 +117,6 @@ export default function Keyboard({ time }: KeyboardProps) {
           time={time}
           isKeyboardAllowed={isKeyboardAllowed}
         />
-      </div>
-
-      <div className="flex justify-start items-center max-sm:flex-col max-sm:items-start ml-12 max-sm:ml-4 max-md:ml-8 p-4 my-4 gap-4">
-        <div className="flex items-center gap-2">
-          <Button
-            variant="navigation"
-            text={'Voltar para escolher o tempo'}
-            time={time}
-            href={'/'}
-            whichIcon={'clock'}
-            title={'Altera tempo de confirmação'}
-          />
-          <span className="text-2xl max-lg:text-xl max-md:text-lg">
-            Tempo de confirmação é <strong>{time / 1000}s</strong>
-          </span>
-        </div>
-        <div className="flex items-center gap-2">
-          <Button
-            variant="navigation"
-            text={'Trocar de teclado'}
-            time={time}
-            href={'/choice'}
-            whichIcon={'keyboard'}
-            title={'Trocar de teclado'}
-          />
-          <span className="text-2xl max-lg:text-xl max-md:text-lg">
-            Trocar de teclado
-          </span>
-        </div>
       </div>
     </main>
   )

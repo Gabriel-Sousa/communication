@@ -23,7 +23,7 @@ export default function Home({ time, changeTime }: HomeProps) {
 
       <Link
         className="border border-green-500 rounded-full px-8 py-4 bg-green-400 hover:brightness-[0.8]"
-        to={'/keyboard'}
+        to={'/choice'}
       >
         Começar ?
       </Link>
