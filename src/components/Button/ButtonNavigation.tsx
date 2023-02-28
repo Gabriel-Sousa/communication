@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 
 interface ButtonActionProps {
   text: string
-  time: number
   href: string
   whichIcon?: 'clock' | 'keyboard'
   title?: string

@@ -1,18 +1,7 @@
-import { Button } from '../components/Button'
+import { ButtonAction } from './Button/ButtonAction'
+import { ButtonSecondary } from './Button/ButtonSecondary'
 
-interface LettersProps {
-  onAddWord: (word: string) => void
-  onDeleteLastWord: () => void
-  time: number
-  isKeyboardAllowed: boolean
-}
-
-export function Letters({
-  onAddWord,
-  onDeleteLastWord,
-  time,
-  isKeyboardAllowed,
-}: LettersProps) {
+export function Letters() {
   const letters = [
     { text: 'a' },
     { text: 'b' },
@@ -46,17 +35,13 @@ export function Letters({
 
   return (
     <div className="grid grid-cols-7 ">
-      {letters.map((letter) => (
-        <Button
-          key={letter.text}
-          text={letter.text}
-          variant={`${letter.variant === 'action' ? 'action' : 'secondary'}`}
-          onAddWord={onAddWord}
-          onDeleteLastWord={onDeleteLastWord}
-          time={time}
-          isKeyboardAllowed={isKeyboardAllowed}
-        />
-      ))}
+      {letters.map((letter) => {
+        if (letter.variant === 'action') {
+          return <ButtonAction key={letter.text} text={letter.text} />
+        }
+
+        return <ButtonSecondary key={letter.text} text={letter.text} />
+      })}
     </div>
   )
 }

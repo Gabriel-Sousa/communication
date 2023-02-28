@@ -1,22 +1,16 @@
 import { useState } from 'react'
 import { MdBackspace, MdSpaceBar } from 'react-icons/md'
 
+import { useKeyboard } from '../../hooks/useKeyboard'
+import { useTime } from '../../hooks/useTime'
+
 interface ButtonActionProps {
   text: string
-  time: number
-  isKeyboardAllowed: boolean
-
-  onAddWord: (word: string) => void
-  onDeleteLastWord?: () => void
 }
 
-export function ButtonAction({
-  text,
-  onAddWord,
-  onDeleteLastWord,
-  time,
-  isKeyboardAllowed,
-}: ButtonActionProps) {
+export function ButtonAction({ text }: ButtonActionProps) {
+  const { time } = useTime()
+  const { isKeyboardAllowed, addWord, deleteLastWord } = useKeyboard()
   const [delayHandler, setDelayHandler] = useState(null || Number)
   const [isAnimationOn, setIsAnimationOn] = useState(false)
 
@@ -30,11 +24,11 @@ export function ButtonAction({
         if (text === 'space') {
           setIsAnimationOn(false)
 
-          onAddWord(' ')
+          addWord(' ')
         } else if (text === 'delete') {
           setIsAnimationOn(false)
 
-          onDeleteLastWord && onDeleteLastWord()
+          deleteLastWord()
         }
       }, time),
     )

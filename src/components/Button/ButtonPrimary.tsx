@@ -1,17 +1,14 @@
 import { useState } from 'react'
 
+import { useKeyboard } from '../../hooks/useKeyboard'
+import { useTime } from '../../hooks/useTime'
+
 interface ButtonPrimaryProps {
   text: string
-  time: number
-  isKeyboardAllowed: boolean
-  onAddWord: (word: string) => void
 }
-export function ButtonPrimary({
-  text,
-  onAddWord,
-  time,
-  isKeyboardAllowed,
-}: ButtonPrimaryProps) {
+export function ButtonPrimary({ text }: ButtonPrimaryProps) {
+  const { time } = useTime()
+  const { isKeyboardAllowed, addWord } = useKeyboard()
   const [delayHandler, setDelayHandler] = useState(null || Number)
   const [isAnimationOn, setIsAnimationOn] = useState(false)
 
@@ -23,7 +20,7 @@ export function ButtonPrimary({
     setDelayHandler(
       setTimeout(() => {
         setIsAnimationOn(false)
-        onAddWord(text)
+        addWord(text)
       }, time),
     )
   }

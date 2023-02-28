@@ -1,25 +1,12 @@
-import { Button } from './Button'
+import { ButtonPrimary } from './Button/ButtonPrimary'
 
-interface WordsProps {
-  onAddWord: (word: string) => void
-  time: number
-  isKeyboardAllowed: boolean
-}
-
-export function Words({ onAddWord, time, isKeyboardAllowed }: WordsProps) {
+export function Words() {
   const words = [{ text: 'eu ' }, { text: 'sim ' }, { text: 'não ' }]
 
   return (
     <div className="flex items-center justify-around border-b-2 border-t-2">
       {words.map((word) => (
-        <Button
-          key={word.text}
-          text={word.text}
-          variant="primary"
-          onAddWord={onAddWord}
-          time={time}
-          isKeyboardAllowed={isKeyboardAllowed}
-        />
+        <ButtonPrimary key={word.text} text={word.text} />
       ))}
     </div>
   )

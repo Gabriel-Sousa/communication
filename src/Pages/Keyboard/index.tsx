@@ -1,17 +1,11 @@
-import { useEffect, useState } from 'react'
-
-import { Button } from '../../components/Button'
+import { ButtonNavigation } from '../../components/Button/ButtonNavigation'
 import { Input } from '../../components/Input'
 import { Letters } from '../../components/Letters'
 import { Words } from '../../components/Words'
+import { useTime } from '../../hooks/useTime'
 
-interface KeyboardProps {
-  time: number
-}
-
-export default function Keyboard({ time }: KeyboardProps) {
-  const [phrase, setPhrase] = useState<string[]>([])
-  const [isKeyboardAllowed, setIsKeyboardAllowed] = useState(false)
+export default function Keyboard() {
+  const { time } = useTime()
 
   navigator.mediaDevices
     .getUserMedia({ audio: true })
@@ -28,104 +22,18 @@ export default function Keyboard({ time }: KeyboardProps) {
     alert('Web Speech API não é compatível com este navegador')
   }
 
-  useEffect(() => {
-    if (!isKeyboardAllowed && phrase.length > 0) {
-      const stringWords = phrase.join('')
-      const arrayWords = stringWords.split(' ')
-      const stringMsg = arrayWords.join(' ')
-
-      const speech = new SpeechSynthesisUtterance(stringMsg)
-      const voices = speechSynthesis.getVoices()
-      speech.voice = voices[1]
-      speech.volume = 2
-      speech.rate = 0.7
-      speech.pitch = 1
-
-      window.speechSynthesis.speak(speech)
-    }
-  }, [phrase, isKeyboardAllowed])
-
-  useEffect(() => {
-    if (phrase.length === 0) {
-      return
-    }
-
-    const speech = new SpeechSynthesisUtterance()
-    speechSynthesis.onvoiceschanged = () => {
-      //   const word = phrase[phrase.length - 1]
-      const voices = speechSynthesis.getVoices()
-      speech.voice = voices[1]
-      //   speech.text = word
-      //   speech.volume = 2
-      //   speech.rate = 1
-      //   speech.pitch = 1
-      //   window.speechSynthesis.speak(speech)
-    }
-
-    const word = phrase[phrase.length - 1]
-    const voices = speechSynthesis.getVoices()
-    speech.voice = voices[1]
-    speech.text = word
-    speech.volume = 2
-    speech.rate = 1
-    speech.pitch = 1
-    window.speechSynthesis.speak(speech)
-  }, [phrase])
-
-  function addWord(word: string) {
-    if (!isKeyboardAllowed) {
-      return
-    }
-
-    setPhrase((state) => [...state, word])
-  }
-
-  function deleteLastWord() {
-    if (phrase.length === 0) {
-      return
-    }
-    if (!isKeyboardAllowed) {
-      return
-    }
-
-    const newPhrase = [...phrase]
-    newPhrase.pop()
-
-    setPhrase(newPhrase)
-  }
-
-  function startOrStop() {
-    setIsKeyboardAllowed(!isKeyboardAllowed)
-  }
-
   return (
     <main>
       <div className="text-7xl max-lg:text-4xl transition-all">
-        <Input
-          phrase={phrase}
-          isKeyboardAllowed={isKeyboardAllowed}
-          startOrStop={startOrStop}
-          time={time}
-        />
-        <Words
-          onAddWord={addWord}
-          time={time}
-          isKeyboardAllowed={isKeyboardAllowed}
-        />
-        <Letters
-          onAddWord={addWord}
-          onDeleteLastWord={deleteLastWord}
-          time={time}
-          isKeyboardAllowed={isKeyboardAllowed}
-        />
+        <Input />
+        <Words />
+        <Letters />
       </div>
 
       <div className="flex justify-start items-center max-sm:flex-col max-sm:items-start ml-12 max-sm:ml-4 max-md:ml-8 p-4 my-4 gap-4">
         <div className="flex items-center gap-2">
-          <Button
-            variant="navigation"
+          <ButtonNavigation
             text={'Voltar para escolher o tempo'}
-            time={time}
             href={'/'}
             whichIcon={'clock'}
             title={'Altera tempo de confirmação'}
@@ -135,10 +43,8 @@ export default function Keyboard({ time }: KeyboardProps) {
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <Button
-            variant="navigation"
+          <ButtonNavigation
             text={'Trocar de teclado'}
-            time={time}
             href={'/choice'}
             whichIcon={'keyboard'}
             title={'Trocar de teclado'}

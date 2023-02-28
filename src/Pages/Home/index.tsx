@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom'
 
-interface HomeProps {
-  time: number
-  changeTime: (time: number) => void
-}
+import { useTime } from '../../hooks/useTime'
 
-export default function Home({ time, changeTime }: HomeProps) {
+export default function Home() {
+  const { time, changeTime } = useTime()
+
   return (
     <div className="slidecontainer text-5xl max-lg:text-4xl h-screen flex flex-col items-center justify-center gap-16 p-16 max-w-5xl mx-auto">
       <span> Escolha o tempo para confirmação das letras </span>
@@ -29,14 +28,4 @@ export default function Home({ time, changeTime }: HomeProps) {
       </Link>
     </div>
   )
-  // return (
-  //   <div className="text-7xl max-lg:text-4xl h-screen flex items-center justify-center ">
-  //     <Link
-  //       className="border border-green-500 rounded-full px-8 py-4 bg-green-400 hover:brightness-[0.8]"
-  //       to={'/keyboard'}
-  //     >
-  //       Go to Keyboard
-  //     </Link>
-  //   </div>
-  // )
 }

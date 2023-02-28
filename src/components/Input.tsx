@@ -1,21 +1,13 @@
 import { useState } from 'react'
-// import { CircularProgressbarWithChildren } from 'react-circular-progressbar'
-// import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import { MdPause, MdPlayArrow } from 'react-icons/md'
 
-interface InputProps {
-  phrase: string[]
-  time: number
-  isKeyboardAllowed: boolean
-  startOrStop: () => void
-}
+import { useKeyboard } from '../hooks/useKeyboard'
+import { useTime } from '../hooks/useTime'
 
-export function Input({
-  phrase,
-  isKeyboardAllowed,
-  startOrStop,
-  time,
-}: InputProps) {
+export function Input() {
+  const { time } = useTime()
+  const { phrase, isKeyboardAllowed, startOrStop } = useKeyboard()
+
   const [delayHandler, setDelayHandler] = useState(null || Number)
   const [isAnimationOn, setIsAnimationOn] = useState(false)
 

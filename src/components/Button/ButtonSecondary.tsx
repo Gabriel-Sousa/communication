@@ -1,18 +1,15 @@
 import { useState } from 'react'
 
+import { useKeyboard } from '../../hooks/useKeyboard'
+import { useTime } from '../../hooks/useTime'
+
 interface ButtonSecondaryProps {
   text: string
-  time: number
-  isKeyboardAllowed: boolean
-  onAddWord: (word: string) => void
 }
 
-export function ButtonSecondary({
-  text,
-  onAddWord,
-  time,
-  isKeyboardAllowed,
-}: ButtonSecondaryProps) {
+export function ButtonSecondary({ text }: ButtonSecondaryProps) {
+  const { time } = useTime()
+  const { isKeyboardAllowed, addWord } = useKeyboard()
   const [delayHandler, setDelayHandler] = useState(null || Number)
   const [isAnimationOn, setIsAnimationOn] = useState(false)
 
@@ -24,7 +21,7 @@ export function ButtonSecondary({
     setDelayHandler(
       setTimeout(() => {
         setIsAnimationOn(false)
-        onAddWord(text)
+        addWord(text)
       }, time),
     )
   }
