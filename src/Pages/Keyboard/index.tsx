@@ -1,11 +1,15 @@
+import { useEffect } from 'react'
+
 import { ButtonNavigation } from '../../components/Button/ButtonNavigation'
 import { Input } from '../../components/Input'
 import { Letters } from '../../components/Letters'
 import { Words } from '../../components/Words'
+import { useKeyboard } from '../../hooks/useKeyboard'
 import { useTime } from '../../hooks/useTime'
 
 export default function Keyboard() {
   const { time } = useTime()
+  const { resetInput } = useKeyboard()
 
   navigator.mediaDevices
     .getUserMedia({ audio: true })
@@ -21,6 +25,10 @@ export default function Keyboard() {
   } else {
     alert('Web Speech API não é compatível com este navegador')
   }
+
+  useEffect(() => {
+    resetInput()
+  }, [])
 
   return (
     <main>
@@ -52,6 +60,14 @@ export default function Keyboard() {
           <span className="text-2xl max-lg:text-xl max-md:text-lg">
             Trocar de teclado
           </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <button
+            className="text-2xl max-lg:text-xl max-md:text-lg bg-green-500 rounded-lg hover:brightness-75 px-4 py-2"
+            onClick={resetInput}
+          >
+            Resetar
+          </button>
         </div>
       </div>
     </main>

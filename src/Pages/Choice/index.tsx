@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 export default function Choice() {
   return (
-    <div className="slidecontainer  max-lg:text-4xl h-screen flex flex-col items-center justify-center gap-16 p-16 max-w-5xl mx-auto">
+    <div className="slideContainer  max-lg:text-4xl h-screen flex flex-col items-center justify-center gap-16 p-16 max-w-5xl mx-auto">
       <span className="text-5xl"> Qual teclado?</span>
       <div className="flex max-md:flex-col max-md:w-80 justify-center items-center gap-5 text-center">
         <Link

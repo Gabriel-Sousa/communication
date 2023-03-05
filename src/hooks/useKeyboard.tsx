@@ -12,6 +12,7 @@ interface KeyboardContextData {
   startOrStop: () => void
   addWord: (word: string) => void
   deleteLastWord: () => void
+  resetInput: () => void
 }
 
 interface KeyboardProviderProp {
@@ -93,6 +94,10 @@ export function KeyboardProvider({ children }: KeyboardProviderProp) {
     setIsKeyboardAllowed(!isKeyboardAllowed)
   }
 
+  function resetInput() {
+    setPhrase([])
+  }
+
   return (
     <KeyboardContext.Provider
       value={{
@@ -101,6 +106,7 @@ export function KeyboardProvider({ children }: KeyboardProviderProp) {
         startOrStop,
         addWord,
         deleteLastWord,
+        resetInput,
       }}
     >
       {children}
