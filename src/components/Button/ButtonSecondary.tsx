@@ -5,9 +5,13 @@ import { useTime } from '../../hooks/useTime'
 
 interface ButtonSecondaryProps {
   text: string
+  variantPhrase?: boolean
 }
 
-export function ButtonSecondary({ text }: ButtonSecondaryProps) {
+export function ButtonSecondary({
+  text,
+  variantPhrase = false,
+}: ButtonSecondaryProps) {
   const { time } = useTime()
   const { isKeyboardAllowed, addWord } = useKeyboard()
   const [delayHandler, setDelayHandler] = useState(null || Number)
@@ -57,28 +61,62 @@ export function ButtonSecondary({ text }: ButtonSecondaryProps) {
     timeComputed = '_25'
   }
 
-  return (
-    <button
-      type="button"
-      className="font-bold capitalize p-8 max-lg:p-3"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div className="max-h-[72px] max-lg:h-[36px]">
-        <div
-          className={`progress
+  if (variantPhrase) {
+    return (
+      <button
+        type="button"
+        className="font-bold capitalize p-8 max-lg:p-3 text-5xl max-2xl:text-4xl max-sm:text-2xl transition-all  lg:h-[112px] md:h-[100px] max-sm:h-[]"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className="max-h-[60px] max-lg:h-[36px] max-md:h-[24px]">
+          <div
+            className={`progress
+          ${timeComputed}
+          ${isAnimationOn ? 'block' : 'hidden'}
+          
+            max-lg:h-[36px] max-md:h-[24px]
+          `}
+          />
+          <p
+            className={`relative 
+            ${isAnimationOn &&
+              `
+              bottom-[72px] 
+              max-lg:bottom-[36px]
+              max-md:bottom-[24px]
+              `
+              }`}
+          >
+            {text}
+          </p>
+        </div>
+      </button>
+    )
+  } else {
+    return (
+      <button
+        type="button"
+        className="font-bold capitalize p-8 max-lg:p-3 "
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className="max-h-[72px] max-lg:h-[36px]">
+          <div
+            className={`progress
           ${timeComputed}
           ${isAnimationOn ? 'block' : 'hidden'}
             max-lg:h-[36px]
           `}
-        />
-        <p
-          className={`relative 
+          />
+          <p
+            className={`relative
             ${isAnimationOn && 'bottom-[72px] max-lg:bottom-[36px]'}`}
-        >
-          {text}
-        </p>
-      </div>
-    </button>
-  )
+          >
+            {text}
+          </p>
+        </div>
+      </button>
+    )
+  }
 }

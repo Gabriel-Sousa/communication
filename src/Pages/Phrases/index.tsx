@@ -12,10 +12,49 @@ export default function Phrases() {
   const [page, setPage] = useState(1)
 
   const phrases = [
-    [{ text: 'Sei la ' }, { text: 'não sei ' }, { text: 'nothing ' }],
-    [{ text: 'd ' }, { text: 'e ' }, { text: 'f ' }],
-    [{ text: 'g ' }, { text: 'h ' }, { text: 'i ' }],
-    [{ text: 'j ' }, { text: 'k ' }, { text: 'l ' }],
+    [
+      { text: 'Mudar posição ' },
+      { text: 'Arrumar cabeça ' },
+      { text: 'subir ' },
+      { text: 'descer ' },
+      { text: 'ir para cadeira ' },
+      { text: 'ir para cama ' },
+      { text: 'calor ' },
+      { text: 'frio ' },
+      { text: 'colocar cobertor ' },
+      { text: 'tirar cobertor ' },
+    ],
+    [
+      { text: 'quero ver Artur ' },
+      { text: 'quero falar com Artur ' },
+      { text: 'quero saber do Artur ' },
+      { text: 'whatsApp ' },
+      { text: 'app BB ' },
+      { text: 'extrato cc ' },
+      { text: 'extrato conta Artur ' },
+      { text: 'extrato investimentos ' },
+      { text: 'site de compras ' },
+    ],
+    [
+      { text: 'quero agua ' },
+      { text: 'estou com fome ' },
+      { text: 'doce de leite ' },
+      { text: 'pudim' },
+      { text: 'sorvete ' },
+      { text: 'sopa ' },
+      { text: 'usar laptop ' },
+      { text: 'usar celular ' },
+      { text: 'usar computador ' },
+      { text: 'usar tablet ' },
+    ],
+    [
+      { text: 'dor nas costas ' },
+      { text: 'dor na cabeça ' },
+      { text: 'dor na GTT ' },
+      { text: 'ir para o escritório ' },
+      { text: 'ir para a sala ' },
+      { text: 'tomar banho ' },
+    ],
   ]
 
   useEffect(() => {
