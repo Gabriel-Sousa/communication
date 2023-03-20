@@ -80,13 +80,14 @@ export function ButtonSecondary({
           />
           <p
             className={`relative 
-            ${isAnimationOn &&
+            ${
+              isAnimationOn &&
               `
               bottom-[72px] 
               max-lg:bottom-[36px]
               max-md:bottom-[24px]
               `
-              }`}
+            }`}
           >
             {text}
           </p>

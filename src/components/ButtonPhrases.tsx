@@ -11,11 +11,10 @@ type Phrase = {
 }[][]
 
 interface ButtonPhrasesProps {
-  page: number
   phrases: Phrase
 }
 
-export function ButtonPhrases({ page, phrases }: ButtonPhrasesProps) {
+export function ButtonPhrases({ phrases }: ButtonPhrasesProps) {
   return (
     <Swiper navigation={true} modules={[Navigation]} className="grid h-[448px]">
       {phrases.map((_, i) => {

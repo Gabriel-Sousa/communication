@@ -2,22 +2,27 @@
 import { MdKeyboardAlt, MdTimer } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 
+import { useTime } from '../../hooks/useTime'
+
 interface ButtonActionProps {
   text: string
   href: string
   whichIcon?: 'clock' | 'keyboard'
   title?: string
+  variant?: 'time' | 'keyboard'
 }
 
 export function ButtonNavigation({
   href,
   whichIcon,
   title,
+  variant,
 }: ButtonActionProps) {
   // const [delayHandler, setDelayHandler] = useState(null || Number)
   // const [isAnimationOn, setIsAnimationOn] = useState(false)
 
   const navigate = useNavigate()
+  const { time } = useTime()
 
   function handleNavigate(href: string) {
     navigate(href)
@@ -68,13 +73,27 @@ export function ButtonNavigation({
   return (
     <button
       onClick={() => handleNavigate(href)}
-      className={'p-4 bg-green-500 rounded-full hover:brightness-75 '}
+      className={
+        'p-4 bg-green-500 rounded-full hover:brightness-75 flex items-center gap-4'
+      }
       title={title}
     >
       {whichIcon === 'clock' ? (
         <MdTimer size={36} />
       ) : whichIcon === 'keyboard' ? (
         <MdKeyboardAlt size={36} />
+      ) : (
+        <div></div>
+      )}
+
+      {variant === 'time' ? (
+        <span className="text-4xl font-bold max-lg:text-2xl max-md:text-xl">
+          Tempo de confirmação é <strong>{time / 1000}s</strong>
+        </span>
+      ) : variant === 'keyboard' ? (
+        <span className="text-4xl font-bold max-lg:text-2xl max-md:text-xl">
+          Trocar de teclado
+        </span>
       ) : (
         <div></div>
       )}

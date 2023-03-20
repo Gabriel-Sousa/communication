@@ -1,15 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import { ButtonNavigation } from '../../components/Button/ButtonNavigation'
 import { ButtonPhrases } from '../../components/ButtonPhrases'
 import { Input } from '../../components/Input'
 import { useKeyboard } from '../../hooks/useKeyboard'
-import { useTime } from '../../hooks/useTime'
 
 export default function Phrases() {
-  const { time } = useTime()
   const { resetInput } = useKeyboard()
-  const [page, setPage] = useState(1)
 
   const phrases = [
     [
@@ -66,7 +63,7 @@ export default function Phrases() {
       <div className="text-7xl max-lg:text-4xl transition-all">
         <Input />
         <div className="border-b-2 " />
-        <ButtonPhrases page={page} phrases={phrases} />
+        <ButtonPhrases phrases={phrases} />
       </div>
 
       <div className="flex justify-around items-center max-sm:flex-col max-sm:items-start ml-12 max-sm:ml-4 max-md:ml-8 p-4 my-4 gap-4">
@@ -76,10 +73,8 @@ export default function Phrases() {
             href={'/'}
             whichIcon={'clock'}
             title={'Altera tempo de confirmação'}
+            variant={'time'}
           />
-          <span className="text-4xl font-bold max-lg:text-2xl max-md:text-xl">
-            Tempo de confirmação é <strong>{time / 1000}s</strong>
-          </span>
         </div>
         <div className="flex items-center gap-2">
           <ButtonNavigation
@@ -87,14 +82,12 @@ export default function Phrases() {
             href={'/choice'}
             whichIcon={'keyboard'}
             title={'Trocar de teclado'}
+            variant={'keyboard'}
           />
-          <span className="text-4xl font-bold max-lg:text-2xl max-md:text-xl">
-            Trocar de teclado
-          </span>
         </div>
         <div className="flex items-center gap-2">
           <button
-            className="text-4xl font-bold max-lg:text-2xl max-md:text-xl bg-green-500 rounded-lg hover:brightness-75 px-4 py-2"
+            className="text-4xl font-bold max-lg:text-2xl max-md:text-xl bg-green-500 hover:brightness-75 p-4 rounded-full"
             onClick={resetInput}
           >
             Resetar
