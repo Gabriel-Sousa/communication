@@ -6,7 +6,7 @@ export default function Home() {
   const { time, changeTime } = useTime()
 
   return (
-    <div className="slideContainer text-5xl max-lg:text-4xl h-screen flex flex-col items-center justify-center gap-16 p-16 max-w-5xl mx-auto">
+    <div className="slideContainer text-5xl max-lg:text-4xl h-screen flex flex-col items-center justify-center gap-16 p-16 max-w-5xl mx-auto text-center">
       <span> Escolha o tempo para confirmação das letras </span>
       <input
         type="range"

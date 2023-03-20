@@ -77,7 +77,7 @@ export default function Phrases() {
             whichIcon={'clock'}
             title={'Altera tempo de confirmação'}
           />
-          <span className="text-2xl max-lg:text-xl max-md:text-lg">
+          <span className="text-4xl font-bold max-lg:text-2xl max-md:text-xl">
             Tempo de confirmação é <strong>{time / 1000}s</strong>
           </span>
         </div>
@@ -88,19 +88,19 @@ export default function Phrases() {
             whichIcon={'keyboard'}
             title={'Trocar de teclado'}
           />
-          <span className="text-2xl max-lg:text-xl max-md:text-lg">
+          <span className="text-4xl font-bold max-lg:text-2xl max-md:text-xl">
             Trocar de teclado
           </span>
         </div>
         <div className="flex items-center gap-2">
           <button
-            className="text-2xl max-lg:text-xl max-md:text-lg bg-green-500 rounded-lg hover:brightness-75 px-4 py-2"
+            className="text-4xl font-bold max-lg:text-2xl max-md:text-xl bg-green-500 rounded-lg hover:brightness-75 px-4 py-2"
             onClick={resetInput}
           >
             Resetar
           </button>
         </div>
-        <div className="flex items-center gap-2">
+        {/* <div className="flex items-center gap-2">
           <strong className="text-2xl max-lg:text-xl max-md:text-lg">
             Página:
           </strong>
@@ -113,7 +113,7 @@ export default function Phrases() {
               {i + 1}
             </button>
           ))}
-        </div>
+        </div> */}
       </div>
     </main>
   )
