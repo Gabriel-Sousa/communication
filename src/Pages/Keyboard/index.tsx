@@ -9,14 +9,14 @@ import { useKeyboard } from '../../hooks/useKeyboard'
 export default function Keyboard() {
   const { resetInput } = useKeyboard()
 
-  navigator.mediaDevices
-    .getUserMedia({ audio: true })
-    .then(function (stream) {
-      // console.log('Permissão para o áudio concedida.')
-    })
-    .catch(function () {
-      // console.log('Erro ao solicitar permissão para o áudio: ' + err)
-    })
+  // navigator.mediaDevices
+  //   .getUserMedia({ audio: true })
+  //   .then(function (stream) {
+  //     // console.log('Permissão para o áudio concedida.')
+  //   })
+  //   .catch(function () {
+  //     // console.log('Erro ao solicitar permissão para o áudio: ' + err)
+  //   })
 
   if ('speechSynthesis' in window) {
     // console.log('Web Speech API é compatível com este navegador')

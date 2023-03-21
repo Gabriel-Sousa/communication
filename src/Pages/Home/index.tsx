@@ -5,6 +5,16 @@ import { useTime } from '../../hooks/useTime'
 export default function Home() {
   const { time, changeTime } = useTime()
 
+  function speak() {
+    const speech = new SpeechSynthesisUtterance('Communication')
+    const voices = speechSynthesis.getVoices()
+    speech.voice = voices[1]
+    speech.volume = 2
+    speech.rate = 0.7
+    speech.pitch = 1
+
+    window.speechSynthesis.speak(speech)
+  }
   return (
     <div className="slideContainer text-5xl max-lg:text-4xl h-screen flex flex-col items-center justify-center gap-16 p-16 max-w-5xl mx-auto text-center">
       <span> Escolha o tempo para confirmação das letras </span>
@@ -23,6 +33,7 @@ export default function Home() {
       <Link
         className="border border-green-500 rounded-full px-8 py-4 bg-green-400 hover:brightness-[0.8]"
         to={'/choice'}
+        onClick={speak}
       >
         Começar ?
       </Link>
