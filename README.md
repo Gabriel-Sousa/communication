@@ -1,8 +1,14 @@
-<br>
-
-<p align="center" style="color: #22C55E; font-size: 3.5rem">
+<h1 align="center" style="color: #22C55E; font-size: 3.5rem">
   Communication 
 </p>
+
+<p align="center">
+  <img alt="WorlTrip" src=".github/communication.png" width="100%">
+</p>
+
+<br>
+
+
 
 ## 🚀 Tecnologias
 
@@ -42,7 +48,7 @@ Você pode ver o site clicando <a href="https://communication.gabriel-sousa.dev/
 
 ## :memo: Licença
 
-Esse projeto está sob a licença MIT. Veja o arquivo <a href="https://github.com/Gabriel-Sousa/communication/blob/main/.github/LICENSE" target="_blank">LICENSE</a>  para mais detalhes.
+Esse projeto está sob a licença MIT. Veja o arquivo <a href="https://github.com/Gabriel-Sousa/communication/blob/master/.github/LICENSE" target="_blank">LICENSE</a>  para mais detalhes.
 
 ---
 
