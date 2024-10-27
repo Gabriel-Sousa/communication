@@ -1,7 +1,7 @@
 <br>
 
-<p align="center">
-  <img alt="Communication" src=".github/communication.png" width="100%">
+<p align="center" style="color: #22C55E; font-size: 3.5rem">
+  Communication 
 </p>
 
 ## 🚀 Tecnologias
